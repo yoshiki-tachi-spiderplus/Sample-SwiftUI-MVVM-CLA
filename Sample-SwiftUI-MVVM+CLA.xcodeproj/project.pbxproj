@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E846E6CE2D5B825E005C9EF5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E846E6CD2D5B825E005C9EF5 /* RealmSwift */; };
+		E846E6F92D5BAFE3005C9EF5 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E846E6CD2D5B825E005C9EF5 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		E846E6A12D59EFB9005C9EF5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -22,6 +27,20 @@
 			remoteInfo = "Sample-SwiftUI-MVVM+CLA";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E846E6F62D5BAF12005C9EF5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E846E6F92D5BAFE3005C9EF5 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E846E6902D59EFB7005C9EF5 /* Sample-SwiftUI-MVVM+CLA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample-SwiftUI-MVVM+CLA.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E846E6CE2D5B825E005C9EF5 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +122,7 @@
 				E846E68C2D59EFB7005C9EF5 /* Sources */,
 				E846E68D2D59EFB7005C9EF5 /* Frameworks */,
 				E846E68E2D59EFB7005C9EF5 /* Resources */,
+				E846E6F62D5BAF12005C9EF5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -112,6 +133,7 @@
 			);
 			name = "Sample-SwiftUI-MVVM+CLA";
 			packageProductDependencies = (
+				E846E6CD2D5B825E005C9EF5 /* RealmSwift */,
 			);
 			productName = "Sample-SwiftUI-MVVM+CLA";
 			productReference = E846E6902D59EFB7005C9EF5 /* Sample-SwiftUI-MVVM+CLA.app */;
@@ -195,6 +217,9 @@
 			);
 			mainGroup = E846E6872D59EFB7005C9EF5;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E846E6CA2D5B8177005C9EF5 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E846E6912D59EFB7005C9EF5 /* Products */;
 			projectDirPath = "";
@@ -558,6 +583,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E846E6CA2D5B8177005C9EF5 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E846E6CD2D5B825E005C9EF5 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E846E6CA2D5B8177005C9EF5 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E846E6882D59EFB7005C9EF5 /* Project object */;
 }
