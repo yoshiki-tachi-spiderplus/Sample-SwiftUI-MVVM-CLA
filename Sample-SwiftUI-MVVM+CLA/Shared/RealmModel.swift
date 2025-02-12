@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class RealmModel: Object, Identifiable {
-    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted(primaryKey: true) var id: String
     @Persisted var title: String
     @Persisted var isCompleted: Bool = false
     

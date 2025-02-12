@@ -17,12 +17,14 @@ struct ContentView: View {
                 TextField("New Task", text: $newTaskTitle)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
+                
                 Button("Add Task") {
                     guard !newTaskTitle.isEmpty else { return }
                     viewModel.addTask(title: newTaskTitle)
                     newTaskTitle = ""
                 }
                 .padding()
+                
                 List {
                     ForEach(viewModel.tasks) { task in
                         HStack {

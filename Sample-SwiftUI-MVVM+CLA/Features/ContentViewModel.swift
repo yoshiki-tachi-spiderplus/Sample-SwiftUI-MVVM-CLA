@@ -17,7 +17,7 @@ class ContentViewModel: ObservableObject {
     }
     
     private func observeTasks() {
-        tasks = useCase.getTasks().map { .init(id: $0.id.stringValue, title: $0.title, isCompleted: $0.isCompleted) }
+        tasks = useCase.getTasks().map { .init(id: $0.id, title: $0.title, isCompleted: $0.isCompleted) }
     }
     
     func addTask(title: String) {
@@ -26,7 +26,7 @@ class ContentViewModel: ObservableObject {
     }
     
     func toggleTaskCompletion(_ task: ContentViewData) {
-        useCase.changeTaskStatus(.init(id: .toObjectId(str: task.id), title: task.title, isCompleted: task.isCompleted))
+        useCase.changeTaskStatus(.init(id: task.id, title: task.title, isCompleted: task.isCompleted))
         observeTasks()
     }
 }

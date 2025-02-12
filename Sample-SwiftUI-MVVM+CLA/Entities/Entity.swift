@@ -6,20 +6,17 @@
 //
 
 import Foundation
-import RealmSwift
 
 struct Entity {
-    let id: ObjectId
+    let id: String
     let title: String
     let isCompleted: Bool
-}
-
-extension ObjectId {
-    static func toObjectId(str: String) -> ObjectId {
-        guard let objectId = try? ObjectId(string: str) else {
-            fatalError("ObjectId is invalid")
-        }
-        return objectId
+    
+    func toRealmModel() -> RealmModel {
+        let realmModel = RealmModel()
+        realmModel.id = id
+        realmModel.title = title
+        realmModel.isCompleted = isCompleted
+        return realmModel
     }
 }
-
