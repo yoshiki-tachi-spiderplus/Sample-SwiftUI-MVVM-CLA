@@ -14,3 +14,12 @@ struct Entity {
     let isCompleted: Bool
 }
 
+extension ObjectId {
+    static func toObjectId(str: String) -> ObjectId {
+        guard let objectId = try? ObjectId(string: str) else {
+            fatalError("ObjectId is invalid")
+        }
+        return objectId
+    }
+}
+

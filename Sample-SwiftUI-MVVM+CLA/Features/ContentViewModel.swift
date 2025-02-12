@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 class ContentViewModel: ObservableObject {
     private let useCase: TaskUseCaseProtocol
@@ -27,12 +26,7 @@ class ContentViewModel: ObservableObject {
     }
     
     func toggleTaskCompletion(_ task: ContentViewData) {
-        do {
-            let id = try ObjectId(string: task.id)
-            useCase.changeTaskStatus(.init(id: id, title: task.title, isCompleted: task.isCompleted))
-            observeTasks()
-        } catch {
-            print(error)
-        }
+        useCase.changeTaskStatus(.init(id: .toObjectId(str: task.id), title: task.title, isCompleted: task.isCompleted))
+        observeTasks()
     }
 }
