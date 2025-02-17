@@ -7,8 +7,17 @@
 
 import Foundation
 
-struct ContentViewData: Identifiable {
+struct ContentViewData: Equatable {
+    var cellData: [CellData]
+    var newTaskTitle: String = ""
+}
+
+struct CellData: Equatable {
     let id: String
-    let title: String
+    var title: String
     let isCompleted: Bool
+    
+    var imageName: String {
+        isCompleted ? "checkmark.circle.fill" : "circle"
+    }
 }

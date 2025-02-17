@@ -9,24 +9,39 @@ import Foundation
 
 class ContentViewModel: ObservableObject {
     private let useCase: TaskUseCaseProtocol
-    @Published var tasks: [ContentViewData] = []
+    @Published var viewData: ContentViewData = .init(cellData: [], newTaskTitle: "")
     
     init(useCase: TaskUseCaseProtocol = TaskUseCase(repository: TaskRepository())) {
         self.useCase = useCase
-        observeTasks()
+        updateViewData()
     }
     
-    private func observeTasks() {
-        tasks = useCase.getTasks().map { .init(id: $0.id, title: $0.title, isCompleted: $0.isCompleted) }
+    func onAppear() {
+        updateViewData()
     }
     
-    func addTask(title: String) {
-        useCase.createTask(title: title)
-        observeTasks()
+    func setNewTaskTitle(_ title: String) {
+        viewData.newTaskTitle = title
     }
     
-    func toggleTaskCompletion(_ task: ContentViewData) {
+    func getNewTaskTitle() -> String {
+        viewData.newTaskTitle
+    }
+    
+    private func updateViewData() {
+        // TODO: reneme Tasks to ViewData
+        viewData.cellData = useCase.getTasks().map { .init(id: $0.id, title: $0.title, isCompleted: $0.isCompleted) }
+    }
+    
+    func addTask() {
+        guard !viewData.newTaskTitle.isEmpty else { return }
+        useCase.createTask(title: viewData.newTaskTitle)
+        updateViewData()
+        viewData.newTaskTitle = ""
+    }
+    
+    func toggleTaskCompletion(_ task: CellData) {
         useCase.changeTaskStatus(.init(id: task.id, title: task.title, isCompleted: task.isCompleted))
-        observeTasks()
+        updateViewData()
     }
 }

@@ -9,31 +9,31 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewModel()
-    @State private var newTaskTitle: String = ""
     
     var body: some View {
         NavigationView {
             VStack {
-                TextField("New Task", text: $newTaskTitle)
+                TextField("New Task", text: .init(get: viewModel.getNewTaskTitle, set: viewModel.setNewTaskTitle(_:)))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
                 Button("Add Task") {
-                    guard !newTaskTitle.isEmpty else { return }
-                    viewModel.addTask(title: newTaskTitle)
-                    newTaskTitle = ""
+                    // TODO: Buttou action rename
+                    viewModel.addTask()
                 }
                 .padding()
                 
                 List {
-                    ForEach(viewModel.tasks) { task in
+                    ForEach($viewModel.viewData.cellData, id: \.id) { data in
                         HStack {
-                            Text(task.title)
+                            Text(verbatim: data.title.wrappedValue)
                             Spacer()
                             Button(action: {
-                                viewModel.toggleTaskCompletion(task)
+                                // TODO: Buttou action rename
+                                viewModel.toggleTaskCompletion(data.wrappedValue)
                             }) {
-                                Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                                // TODO: ロジック入ってる
+                                Image(systemName: data.wrappedValue.imageName)
                             }
                         }
                     }
